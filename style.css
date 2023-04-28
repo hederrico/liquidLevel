@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #242424;
+}
+
+#content {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+#title {
+    color: #ccc3a8;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+
+#liquidLevelMeter {
+    width: 100%;
+    background: #ccc3a8;
+    height: 10px;
+    position: relative;
+    border-radius: .315rem;
+
+    --progressWidth: 0px;
+}
+
+#liquidLevelMeter::before {
+    content: "";
+    position: absolute;
+    width: var(--progressWidth);
+    height: inherit;
+    border-radius: inherit;
+    background-color: #2b80af;
+}
+
+
+#liquidMeterHandler {
+    display: inline-block;
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: yellowgreen;
+    cursor: grab;
+}
+
+#tank {
+    border: 3px solid #ccc3a8;
+    width: clamp(100px, 20vw, 400px);
+    height: clamp(300px, 50vh, 600px);
+    border-radius: .315rem;
+    position: relative;
+}
+
+#tank::before {
+    content: "";
+    display: inline-block;
+    background: #36a1cb;
+    position: absolute;
+    z-index: -1;
+
+    height: inherit;
+    width: inherit;
+}
