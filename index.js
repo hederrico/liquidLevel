@@ -37,7 +37,6 @@ const verifyHandlerPosition = () => {
 
     liquidMeter.style.setProperty('--progressWidth', `${newValue + liquidMeterHandler.offsetWidth/2}px`);
     liquidMeterHandler.style.setProperty('left', `${newValue}px`);
-    liquidLevel.style.setProperty('--liquidLevel', `${newValue + liquidMeterHandler.offsetWidth/2}%`);
 }
 
 window.addEventListener('resize', (e) => {
