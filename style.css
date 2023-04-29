@@ -1,6 +1,9 @@
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
+    color: #ccc3a8;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -13,12 +16,12 @@ body {
     display: grid;
     place-items: center;
     height: 100vh;
+    gap: 1rem;
 }
 
+/* Title and Meter Styles */
 #title {
-    color: #ccc3a8;
     text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
     letter-spacing: 5px;
     display: flex;
     flex-direction: column;
@@ -26,18 +29,23 @@ body {
     align-items: center;
 }
 
-
 #liquidLevelMeter {
     width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#liquidLevelBar {
+    flex: 1;
     background: #ccc3a8;
     height: 10px;
     position: relative;
     border-radius: .315rem;
-
     --progressWidth: 0px;
 }
 
-#liquidLevelMeter::before {
+#liquidLevelBar::before {
     content: "";
     position: absolute;
     width: var(--progressWidth);
@@ -45,7 +53,6 @@ body {
     border-radius: inherit;
     background-color: #2b80af;
 }
-
 
 #liquidMeterHandler {
     display: inline-block;
@@ -60,21 +67,42 @@ body {
     cursor: grab;
 }
 
+/* Tank Styles */
+
+#liquidTank {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+#tankLevel {
+    font-size: 1.5rem;
+}
+
 #tank {
     border: 3px solid #ccc3a8;
     width: clamp(100px, 20vw, 400px);
     height: clamp(300px, 50vh, 600px);
     border-radius: .315rem;
     position: relative;
+    --liquidLevel: 0;
 }
 
-#tank::before {
-    content: "";
-    display: inline-block;
+#liquidLevel {
     background: #36a1cb;
     position: absolute;
     z-index: -1;
-
-    height: inherit;
+    bottom: 0;
+    height: var(--liquidLevel);
     width: inherit;
+    transition: height .8s ease-in-out;
+}
+
+/* Footer */
+
+#creators {
+    position: absolute;
+    right: clamp(20px, 2rem, 40px);
+    bottom: clamp(10px, 0.5rem, 30px);
+    letter-spacing: 1px;
 }
