@@ -70,13 +70,14 @@ body {
 /* Tank Styles */
 
 #liquidTank {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+    position: relative;
 }
 
 #tankLevel {
     font-size: 1.5rem;
+    position: absolute;
+    transform: translate(50%, -100%);
+    right: -4rem;
 }
 
 #tank {
@@ -85,7 +86,7 @@ body {
     height: clamp(300px, 50vh, 600px);
     border-radius: .315rem;
     position: relative;
-    --liquidLevel: 0;
+    --liquidLevel: 0%;
 }
 
 #liquidLevel {
@@ -96,6 +97,27 @@ body {
     height: var(--liquidLevel);
     width: inherit;
     transition: height .8s ease-in-out;
+}
+
+.threshold {
+    height: 0px;
+    width: 100%;
+    border: 1px dashed #ccc3a8;
+    position: absolute;
+    bottom: 0px;
+    transform: translateY(-100%);
+}
+
+.threshold:nth-of-type(1) {
+    bottom: 25%;
+}
+
+.threshold:nth-of-type(2) {
+    bottom: 50%;
+}
+
+.threshold:nth-of-type(3) {
+    bottom: 75%;
 }
 
 /* Footer */

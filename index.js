@@ -1,6 +1,7 @@
 var liquidMeter = document.getElementById('liquidLevelBar');
 var liquidMeterHandler = document.getElementById('liquidMeterHandler');
 var liquidLevel = document.getElementById('liquidLevel');
+var tankLevel = document.getElementById('tankLevel');
 
 liquidMeterHandler.addEventListener('dragstart', (e) => {
     e.dataTransfer.setDragImage(document.createElement("div"), 0, 0);
@@ -27,7 +28,13 @@ const dragAttVariables = (e) => {
     liquidMeter.style.setProperty('--progressWidth', `${posX + e.target.offsetWidth/2}px`);
     liquidMeter.dataset.currentValue = (posX / liquidMeter.offsetWidth);
 
-    liquidLevel.style.setProperty('--liquidLevel', `${(posX + e.target.offsetWidth/2) / liquidMeter.offsetWidth * 100}%`);
+    var percentage = (posX + e.target.offsetWidth/2) / liquidMeter.offsetWidth * 100;
+
+    liquidLevel.style.setProperty('--liquidLevel', `${percentage}%`);
+    
+    setTimeout(() => {
+        tankLevel.innerHTML = `${([0, 100].includes(percentage) ? parseInt(percentage) : percentage.toFixed(2))}%`;
+    }, 400);
 }
 
 const verifyHandlerPosition = () => {
