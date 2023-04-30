@@ -2,11 +2,22 @@
 * {
     margin: 0;
     padding: 0;
-    color: #ccc3a8;
     font-family: 'Roboto', sans-serif;
+
+    --progressWidth: 0px;
+    --liquidLevel: 0%;
+    --levelText: '0%';
+
+    --coolWaterColor: #36a1cb;
+    --normalWaterColor: #287897;
+    --warningWaterColor: #21647e;
+    --alertWaterColor: #133b4b;
+
+    --waterColor: var(--alertWaterColor);
 }
 
 body {
+    color: #ccc3a8;
     width: 100vw;
     height: 100vh;
     background-color: #242424;
@@ -30,7 +41,7 @@ body {
 }
 
 #liquidLevelMeter {
-    width: 100%;
+    width: clamp(300px, 15vw, 600px);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -42,7 +53,6 @@ body {
     height: 10px;
     position: relative;
     border-radius: .315rem;
-    --progressWidth: 0px;
 }
 
 #liquidLevelBar::before {
@@ -77,7 +87,7 @@ body {
     font-size: 1.5rem;
     position: absolute;
     transform: translate(50%, -100%);
-    right: -4rem;
+    right: -3.3rem;
 }
 
 #tank {
@@ -86,17 +96,16 @@ body {
     height: clamp(300px, 50vh, 600px);
     border-radius: .315rem;
     position: relative;
-    --liquidLevel: 0%;
 }
 
 #liquidLevel {
-    background: #36a1cb;
+    background-color: var(--waterColor);
     position: absolute;
     z-index: -1;
     bottom: 0;
     height: var(--liquidLevel);
     width: inherit;
-    transition: height .8s ease-in-out;
+    transition: height .8s ease-in-out, background-color .8s ease-in-out;
 }
 
 .threshold {
@@ -105,26 +114,43 @@ body {
     border: 1px dashed #ccc3a8;
     position: absolute;
     bottom: 0px;
-    transform: translateY(-100%);
+    transform: translateY(100%);
 }
 
 .threshold:nth-of-type(1) {
+    --levelText: '25%';
     bottom: 25%;
 }
 
 .threshold:nth-of-type(2) {
+    --levelText: '50%';
     bottom: 50%;
 }
 
 .threshold:nth-of-type(3) {
+    --levelText: '75%';
     bottom: 75%;
+}
+
+.threshold::before {
+    content: var(--levelText);
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(-150%, 50%);
 }
 
 /* Footer */
 
 #creators {
     position: absolute;
-    right: clamp(20px, 2rem, 40px);
-    bottom: clamp(10px, 0.5rem, 30px);
-    letter-spacing: 1px;
+    right: 10px;
+    bottom: 10px;
+    /* letter-spacing: 1px; */
+}
+
+#creators a {
+    text-decoration: none;
+    color: var(--coolWaterColor);
 }

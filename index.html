@@ -18,7 +18,7 @@
     <section>
         <div id="content">
             <div id="title">
-                <h1>Liquid Level Bar</h1>
+                <h1>Liquid Level</h1>
                 <div id="liquidLevelMeter">
                     <p id="minBound" class="meterBound">&nbsp;&nbsp;&nbsp;0%</p>
 
@@ -36,9 +36,12 @@
                         <p id="tankLevel">0%</p>
                     </div>
 
-                    <div class="threshold"></div>
-                    <div class="threshold"></div>
-                    <div class="threshold"></div>
+                    <div id="thresholdLines">
+                        <div class="threshold"></div>
+                        <div class="threshold"></div>
+                        <div class="threshold"></div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -46,7 +49,11 @@
 </body>
 
 <footer>
-    <p id="creators">Henrique 🤝🏼 André</p>
+    <p id="creators">
+        <a href="https://github.com/hederrico" target="_blank">Henrique</a>
+        🤝🏼
+        <a href="https://github.com/AndreBaris" target="_blank">André</a>
+    </p>
 </footer>
 
 <script src="index.js"></script>
